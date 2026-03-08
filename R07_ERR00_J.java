@@ -3,7 +3,7 @@ class Foo implements Runnable {
     try{
       Thread.sleep(1000);
     } catch(InterruptedException e) {
-      // Ignore
+      Thread.currentThread().interrupt(); //Reset interrupted status
     }
   }
 }
