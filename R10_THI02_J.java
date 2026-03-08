@@ -16,16 +16,13 @@ public ProcessStep(int step) {
       //Perfrom operations
 
     time++;
-      lock.notify();
+      lock.notifyAll(); //Use notifyAll() instead of notify()
     }
   } catch (InterruptedException ie) {
     Thread.currentThread().interrupt(); // Reset interrupted status
   }
 }
 
-public static void main(String[] args) {
-  for (int i = 4; i >= 0; i--) {
-    new Thread(new ProcessStep(i)).start();
-  }
+
 }
-}
+
