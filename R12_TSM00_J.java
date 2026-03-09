@@ -11,11 +11,15 @@ public void doSomething() {
 class Derived extends Base {
   Logger logger = // Initialize
 
+  private final Object lock = new Object();
+
   @Override public void doSomething() {
+    synchronized (lock) {
     try {
       super.doSomething();
     } finally {
       logger.log(Level.FINE, "Did something");
+     }
     }
   }
 }
